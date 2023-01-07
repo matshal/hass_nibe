@@ -370,7 +370,7 @@ class NibeSystem(DataUpdateCoordinator):
         """Update parameter cache."""
 
         async def _get(parameter_id: ParameterId):
-            _LOGGER.debug('update_parameters: _get '+ ParameterId)
+            _LOGGER.debug('update_parameters: _get')
             self._parameters[parameter_id] = await self.uplink.get_parameter(
                 self.system_id, parameter_id
             )
