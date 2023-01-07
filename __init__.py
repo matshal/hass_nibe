@@ -305,9 +305,8 @@ class NibeSystem(DataUpdateCoordinator):
     @callback
     def _async_check_refresh(self):
         """Update the system if timestamps have changed."""
-        _LOGGER.debug('_async_check_refresh')
         if system := self.parent.data.get(self.system_id):
-            _LOGGER.debug("Got system {} and old system {}".format(system, self.system))
+            _LOGGER.debug("System Status {}".format(system))
             if self.system != system:
                 self.system = system
                 self.hass.async_add_job(self.async_request_refresh)
@@ -372,7 +371,7 @@ class NibeSystem(DataUpdateCoordinator):
         """Update parameter cache."""
 
         async def _get(parameter_id: ParameterId):
-            _LOGGER.debug('update_parameters: _get')
+            _LOGGER.debug("update_parameters: _get {}".format(parameter_id))
             self._parameters[parameter_id] = await self.uplink.get_parameter(
                 self.system_id, parameter_id
             )
