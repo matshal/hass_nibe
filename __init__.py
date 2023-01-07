@@ -305,6 +305,7 @@ class NibeSystem(DataUpdateCoordinator):
     @callback
     def _async_check_refresh(self):
         """Update the system if timestamps have changed."""
+        _LOGGER.debug('_async_check_refresh')
         if system := self.parent.data.get(self.system_id):
             if self.system != system:
                 self.system = system
